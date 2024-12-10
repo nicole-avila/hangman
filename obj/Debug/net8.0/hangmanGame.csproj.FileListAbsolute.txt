@@ -12,3 +12,9 @@
 /Users/nicoleavila/Documents/GitHub/hangmanGame/obj/Debug/net8.0/hangmanGame.pdb
 /Users/nicoleavila/Documents/GitHub/hangmanGame/obj/Debug/net8.0/hangmanGame.genruntimeconfig.cache
 /Users/nicoleavila/Documents/GitHub/hangmanGame/obj/Debug/net8.0/ref/hangmanGame.dll
+/Users/nicoleavila/Documents/GitHub/hangmanGame/bin/Debug/net8.0/FluentValidation.dll
+/Users/nicoleavila/Documents/GitHub/hangmanGame/bin/Debug/net8.0/Newtonsoft.Json.dll
+/Users/nicoleavila/Documents/GitHub/hangmanGame/bin/Debug/net8.0/Spectre.Console.dll
+/Users/nicoleavila/Documents/GitHub/hangmanGame/obj/Debug/net8.0/hangmanGame.csproj.AssemblyReference.cache
+/Users/nicoleavila/Documents/GitHub/hangmanGame/obj/Debug/net8.0/hangmanGame.sourcelink.json
+/Users/nicoleavila/Documents/GitHub/hangmanGame/obj/Debug/net8.0/hangmanG.1B861CB2.Up2Date
