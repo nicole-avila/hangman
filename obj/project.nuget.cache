@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "c8jv/I2nB50=",
+  "dgSpecHash": "xjAk/AH97sc=",
   "success": true,
   "projectFilePath": "/Users/nicoleavila/Documents/GitHub/hangmanGame/hangmanGame.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "/Users/nicoleavila/.nuget/packages/spectre.console/0.49.1/spectre.console.0.49.1.nupkg.sha512"
+  ],
   "logs": []
 }
