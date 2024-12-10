@@ -4,7 +4,10 @@
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Welcome to Hangman Game!");
+        FileWordProvider wordProvider = new FileWordProvider("words.json");
+        Console.WriteLine("Word provider and game service initialized successfully.");
+        GameService gameService = new GameService(wordProvider);
+        gameService.StartGame();
         }
     }
 }
