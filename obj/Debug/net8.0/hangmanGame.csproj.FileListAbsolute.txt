@@ -1,0 +1,14 @@
+/Users/nicoleavila/Documents/GitHub/hangmanGame/bin/Debug/net8.0/hangmanGame
+/Users/nicoleavila/Documents/GitHub/hangmanGame/bin/Debug/net8.0/hangmanGame.deps.json
+/Users/nicoleavila/Documents/GitHub/hangmanGame/bin/Debug/net8.0/hangmanGame.runtimeconfig.json
+/Users/nicoleavila/Documents/GitHub/hangmanGame/bin/Debug/net8.0/hangmanGame.dll
+/Users/nicoleavila/Documents/GitHub/hangmanGame/bin/Debug/net8.0/hangmanGame.pdb
+/Users/nicoleavila/Documents/GitHub/hangmanGame/obj/Debug/net8.0/hangmanGame.GeneratedMSBuildEditorConfig.editorconfig
+/Users/nicoleavila/Documents/GitHub/hangmanGame/obj/Debug/net8.0/hangmanGame.AssemblyInfoInputs.cache
+/Users/nicoleavila/Documents/GitHub/hangmanGame/obj/Debug/net8.0/hangmanGame.AssemblyInfo.cs
+/Users/nicoleavila/Documents/GitHub/hangmanGame/obj/Debug/net8.0/hangmanGame.csproj.CoreCompileInputs.cache
+/Users/nicoleavila/Documents/GitHub/hangmanGame/obj/Debug/net8.0/hangmanGame.dll
+/Users/nicoleavila/Documents/GitHub/hangmanGame/obj/Debug/net8.0/refint/hangmanGame.dll
+/Users/nicoleavila/Documents/GitHub/hangmanGame/obj/Debug/net8.0/hangmanGame.pdb
+/Users/nicoleavila/Documents/GitHub/hangmanGame/obj/Debug/net8.0/hangmanGame.genruntimeconfig.cache
+/Users/nicoleavila/Documents/GitHub/hangmanGame/obj/Debug/net8.0/ref/hangmanGame.dll
