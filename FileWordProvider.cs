@@ -1,37 +1,45 @@
-using System;
-using System.IO;
-using System.Collections.Generic;
-
 namespace hangmanGame
 {
     public class FileWordProvider : IWordProvider
     {
-        private readonly WordManager _repository;
-        private List<string> _words;
+        private readonly WordManager<string> _wordManager;
 
         public FileWordProvider(string filePath)
         {
-            _repository = new WordManager(filePath);
-            _words = _repository.LoadWords();
+            _wordManager = new WordManager<string>(filePath);
         }
 
         public string GetWord()
         {
-            Random random = new Random();
-            return _words[random.Next(_words.Count)].Trim();
+            var words = _wordManager.LoadWordsData();
+            if (words.Count == 0)
+                throw new InvalidOperationException("No words available. Add some words first.");
+
+            var random = new Random();
+            return words[random.Next(words.Count)].Trim();
         }
 
-        public void AddWord(string newWord)
+      
+        public bool AddWord(string newWord) 
         {
-            if (string.IsNullOrWhiteSpace(newWord) || _words.Contains(newWord.Trim()))
+            newWord = newWord.Trim().ToLower();
+            if (string.IsNullOrWhiteSpace(newWord))
             {
-                Console.WriteLine("Invalid or duplicate word.");
-                return;
+                Console.WriteLine("The word cannot be empty.");
+                return false; 
             }
-            
-            _words.Add(newWord);
-            _repository.SaveWords(_words);
+
+            var words = _wordManager.LoadWordsData();
+            // if (words.Contains(newWord))
+            // {
+            //     Console.WriteLine("The word already exists.");
+            //     return false; 
+            // }
+
+            words.Add(newWord);
+            _wordManager.SaveWordsData(words);
             Console.WriteLine($"Added word: {newWord}");
+            return true;
         }
     }
 }
