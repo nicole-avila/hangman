@@ -1,10 +1,8 @@
-using System.Collections.Generic;
-using System.IO;
 using Newtonsoft.Json;
 
 namespace hangmanGame
 {
-    public class WordManager
+    public class WordManager<T>
     {
         private readonly string _filePath;
 
@@ -13,22 +11,26 @@ namespace hangmanGame
             _filePath = filePath;
         }
 
-        public List<string> LoadWords()
+        public List<T> LoadWordsData()
         {
             if (File.Exists(_filePath))
             {
                 var json = File.ReadAllText(_filePath);
-                var data = JsonConvert.DeserializeObject<WordsData>(json);
-                return data?.Words ?? new List<string>();
+                var data = JsonConvert.DeserializeObject<WordsData<T>>(json);
+                return data?.Words ?? new List<T>();
             }
-            return new List<string>();
+                return new List<T>();
         }
 
-        public void SaveWords(List<string> words)
+        public void SaveWordsData(List<T> words)
         {
-            var data = new WordsData { Words = words };
+            var data = new WordsData<T> { Words = words };
             var json = JsonConvert.SerializeObject(data, Formatting.Indented);
             File.WriteAllText(_filePath, json);
         }
+    }
+    public class WordsData<T>
+    {
+        public List<T> Words { get; set; } = new List<T>();
     }
 }
