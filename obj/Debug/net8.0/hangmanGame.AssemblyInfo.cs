@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("hangmanGame")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+efa6bdc68ca96b1bbfa0230ce038f03dc24aa75a")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4d808b22f8de7b6e71b497d7d5574575722f5cfd")]
 [assembly: System.Reflection.AssemblyProductAttribute("hangmanGame")]
 [assembly: System.Reflection.AssemblyTitleAttribute("hangmanGame")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
