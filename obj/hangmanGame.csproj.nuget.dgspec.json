@@ -43,6 +43,10 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "Figgle": {
+              "target": "Package",
+              "version": "[0.5.1, )"
+            },
             "FluentValidation": {
               "target": "Package",
               "version": "[11.11.0, )"
