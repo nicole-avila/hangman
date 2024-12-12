@@ -2,7 +2,7 @@ namespace hangmanGame
 {
     public interface IWordProvider
     {
-        string GetWord();
+        Word<string> GetWord();
         bool AddWord(string newWord);
     }
 }

@@ -9,34 +9,34 @@ namespace hangmanGame
             _wordManager = new WordManager<string>(filePath);
         }
 
-        public string GetWord()
+        public Word<string> GetWord()
         {
             var words = _wordManager.LoadWordsData();
             if (words.Count == 0)
                 throw new InvalidOperationException("No words available. Add some words first.");
 
             var random = new Random();
-            return words[random.Next(words.Count)].Trim();
+            return words[random.Next(words.Count - 1)];
         }
 
       
         public bool AddWord(string newWord) 
         {
-            newWord = newWord.Trim().ToLower();
-            if (string.IsNullOrWhiteSpace(newWord))
-            {
-                Console.WriteLine("The word cannot be empty.");
-                return false; 
-            }
+            var trimmedValue = newWord.Trim().ToLower();
 
             var words = _wordManager.LoadWordsData();
-            // if (words.Contains(newWord))
-            // {
-            //     Console.WriteLine("The word already exists.");
-            //     return false; 
-            // }
 
-            words.Add(newWord);
+            var trimmedWord = new Word<string>(trimmedValue);
+
+            var validationResult = _wordManager.IsValidWord(trimmedWord);
+            
+            if(!validationResult.IsValid){
+                validationResult.Errors.ForEach(error => Console.WriteLine(error.ErrorMessage));
+                return false;
+            }
+
+            words.Add(trimmedWord);
+
             _wordManager.SaveWordsData(words);
             Console.WriteLine($"Added word: {newWord}");
             return true;

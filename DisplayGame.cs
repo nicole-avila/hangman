@@ -1,3 +1,5 @@
+using System.Collections.Concurrent;
+
 namespace hangmanGame
 {
     public class DisplayInterface
@@ -20,12 +22,12 @@ namespace hangmanGame
                 _ui.DisplayTitle();
                 _ui.MainMenu();
 
-                var choice = Console.ReadKey(true).KeyChar;
+                var userInput = Console.ReadKey(true).KeyChar;
 
-                switch (choice)
+                switch (userInput)
                 {
                     case '1':
-                        _gameService.StartGame();
+                        _gameService.StartGame(_ui);
                         if (AskToPlayAgain())
                         continue; 
                         break;
@@ -36,7 +38,7 @@ namespace hangmanGame
                         Console.WriteLine("\nExiting game. Goodbye!");
                         return;
                     default:
-                        Console.WriteLine("Invalid choice. Please try again.");
+                        Console.WriteLine("Invalid userInput. Please try again.");
                         break;
                 }
             }
@@ -48,51 +50,43 @@ namespace hangmanGame
             char answer = Console.ReadKey(true).KeyChar;
             return answer == 'y' || answer == 'Y';
         }
-
-        //Fortästt här med felhanteringen.. Om ordet redan finns ge ett felmeddelande och be användaren att försöka igen.  
+ 
         private void AddNewWord()
         {
+            _ui.DisplayTitle();
             while (true) 
             {
                 Console.Write("\nEnter a new word to add (3-11 characters, letters only): ");
                 string newWord = (Console.ReadLine() ?? string.Empty).Trim();
 
-                var validator = new WordValidator();
-                var validationResult = validator.Validate(new Word { Value = newWord });
-
                 Console.WriteLine("Attempting to add word: " + newWord);
 
-            
-                if (validationResult.IsValid && newWord.Length >= 3 && newWord.Length <= 11)
+                var success = _wordProvider.AddWord(newWord);
+
+                if(success)
                 {
-                
-                    if (_wordProvider.AddWord(newWord))
-                    {
-                        _ui.ShowWordSaved();
-                        Console.WriteLine("Press any key to continue...");
-                        Console.ReadKey();
-                        break; 
-                    }
-                    else
-                    {
-                        Console.WriteLine("The word already exists."); 
-                    }
+                    _ui.ShowWordSaved();
+                    Console.WriteLine("Press any key to continue...");
+                    Console.ReadKey();
+                    return;
                 }
                 else
                 {
-                    Console.WriteLine("Invalid word. Please try again.");
-                    foreach (var error in validationResult.Errors)
-                    {
-                        Console.WriteLine(error.ErrorMessage);
-                    }
+                    Console.WriteLine("Do you want to try again or go back to the menu? Use the menu to navigate");
                 }
 
-                Console.WriteLine("Do you want to try again or go back to the menu? (Enter 'again' to try or press enter to return to menu)");
-
-                string userInput = Console.ReadLine()!;
-                if (userInput?.Trim().ToLower() != "again")
+                Console.WriteLine("1. Try again");
+                Console.WriteLine("2. Go back to menu");
+                var userInput = Console.ReadKey(true).KeyChar;
+                switch (userInput)
                 {
-                    break; 
+                    case '1':
+                        break;
+                    case '2':
+                        return;
+                    default:
+                        Console.WriteLine("Invalid userInput. Please try again.");
+                    continue;
                 }
             }
         }
