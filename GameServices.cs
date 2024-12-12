@@ -12,22 +12,23 @@ namespace hangmanGame
             _wordProvider = wordProvider;
         }
 
-        public void StartGame()
+        public void StartGame(UserInterface ui)
         {
-            _currentWord = _wordProvider.GetWord();
+            _currentWord = _wordProvider.GetWord().GetValue;
             _guessedLetters.Clear();
             _remainingAttempts = 7;
 
+            ui.DisplayTitle();
             Console.WriteLine("Game Started!");
 
             while (_remainingAttempts > 0 && !IsWordGuessed())
             {
+                Console.WriteLine();
                 Console.WriteLine($"Guessed letters: {string.Join(", ", _guessedLetters)}");
                 Console.WriteLine($"Current Word: {GetMaskedWord()}");
-                Console.Write("Enter your guess: ");
+                Console.WriteLine("Enter your guess: ");
 
-                char guess = char.ToLower(Console.ReadKey().KeyChar); 
-                Console.WriteLine();
+                char guess = char.ToLower(Console.ReadKey(true).KeyChar); 
 
                   if (!char.IsLetter(guess))
                 {
